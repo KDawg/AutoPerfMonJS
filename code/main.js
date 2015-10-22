@@ -1,24 +1,6 @@
-requirejs(['meld'], function(meld) {
+requirejs(['meld', 'server'], function(meld, ServerVM) {
 
   console.log('!!!main.js is loaded');
-
-
-  var ServerVM = function(ipAddr, machineName) {
-    this.ipAddr = ipAddr || '';
-    this.machineName = machineName || '';
-  };
-
-
-  ServerVM.prototype.timeSuck = function(howMuchSuck) {
-    var randomNumber = Math.random();
-
-    console.log('>>[' + this.machineName + '] tickSuck takes a long time to run!!!');
-    for (var i = 0; i < howMuchSuck; i++) {
-      Math.cos(randomNumber);
-      Math.sqrt(randomNumber);
-      Math.sin(randomNumber);
-    }
-  };
 
 
   meld.before(ServerVM.prototype, 'timeSuck', function() {
