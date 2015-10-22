@@ -1,16 +1,14 @@
 
-_ Rodrigo mentioned "AOP" and the Meld project on GitHub
-  https://github.com/cujojs/meld
+_ show example of just a function() being timed
 
-_ How does SpyOn in Jasmine testing do a swap and call?
-_ TimeSucker.prototype.constructor returns the function's code after all
+_ show a super naive hand-rolled one
 
+_ push this up into a GitHub repo
+
+=> I know Jasmine's SpyOn does a swap and call
 
 http://know.cujojs.com/tutorials/aop/intro-to-aspect-oriented-programming
 https://smthngsmwhr.wordpress.com/2013/06/23/aspect-oriented-programming-in-javascript/
-http://www.aspectjs.com/
-http://modernjavascript.blogspot.com/2013/06/aspect-oriented-programming-in.html
-http://www.jayway.com/2012/07/02/simple-aop-in-javascript/
 http://www.slideshare.net/SpringCentral/ao-ping-yourjavascript
 http://blog.mgechev.com/2015/07/29/aspect-oriented-programming-javascript-aop-js/
 https://github.com/cujojs/meld

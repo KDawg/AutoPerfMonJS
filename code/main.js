@@ -1,16 +1,15 @@
 requirejs(['meld', 'server'], function(meld, ServerVM) {
 
-  console.log('!!!main.js is loaded');
+  function ChangeBehaviorOfTimeSuckWithPerfMon() {
+    meld.before(ServerVM.prototype, 'timeSuck', function() {
+      performance.mark('timeSuck:before');
+    });
 
-
-  meld.before(ServerVM.prototype, 'timeSuck', function() {
-    performance.mark('timeSuck:before');
-  });
-
-  meld.after(ServerVM.prototype, 'timeSuck', function() {
-    performance.mark('timeSuck:after');
-    performance.measure('timeSuck', 'timeSuck:before', 'timeSuck:after');
-  });
+    meld.after(ServerVM.prototype, 'timeSuck', function() {
+      performance.mark('timeSuck:after');
+      performance.measure('timeSuck', 'timeSuck:before', 'timeSuck:after');
+    });
+  }
 
 
   function ReportOnTimeSuckage() {
@@ -20,9 +19,14 @@ requirejs(['meld', 'server'], function(meld, ServerVM) {
 
     measures.forEach(function(entry, index, allEntries) {
       console.log('duration[' + index + '] was ' + entry.duration + ' ms');
-    })
+    });
   }
 
+
+  console.log('!!!main.js is loaded');
+
+
+  ChangeBehaviorOfTimeSuckWithPerfMon();
 
   var newUser = new ServerVM('127.0.0.1', 'localhost');
 
