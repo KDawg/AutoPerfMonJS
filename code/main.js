@@ -4,12 +4,15 @@ requirejs(['meld', 'server', 'compute'], function(meld, ServerVM, compute) {
   console.log('!!!run performance on the Time Sucker Class Object');
 
 
+  var serverPerfMonBeforeBehaviorRemover, serverPerfMonAfterBehaviorRemover;
+
+
   function ServerChangeBehaviorWithPerfMon() {
-    meld.before(ServerVM.prototype, 'timeSuck', function() {
+    serverPerfMonBeforeBehaviorRemover = meld.before(ServerVM.prototype, 'timeSuck', function() {
       performance.mark('timeSuck:before');
     });
 
-    meld.after(ServerVM.prototype, 'timeSuck', function() {
+    serverPerfMonAfterBehaviorRemover = meld.after(ServerVM.prototype, 'timeSuck', function() {
       performance.mark('timeSuck:after');
       performance.measure('timeSuck', 'timeSuck:before', 'timeSuck:after');
     });
@@ -39,10 +42,16 @@ requirejs(['meld', 'server', 'compute'], function(meld, ServerVM, compute) {
   }
 
 
+  function ServerRestoreBehaviorWithoutPerfMon() {
+    serverPerfMonBeforeBehaviorRemover.remove();
+    serverPerfMonAfterBehaviorRemover.remove();
+  }
+
+
   ServerChangeBehaviorWithPerfMon();
   ServerRun();
   ServerReportPerfMon();
-
+  ServerRestoreBehaviorWithoutPerfMon();
 
 
   console.log('============================================');
