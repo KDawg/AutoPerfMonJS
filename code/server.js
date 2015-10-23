@@ -17,6 +17,17 @@ define(function() {
     }
   };
 
+
+  ServerVMClass.prototype.getIpAddr = function() {
+    return this.ipAddr;
+  };
+
+
+  ServerVMClass.prototype.getMachineName = function() {
+    return this.machineName;
+  };
+
+
   return ServerVMClass;
 
 });
