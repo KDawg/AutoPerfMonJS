@@ -1,15 +1,15 @@
 define(function() {
 
-  var ServerVM = function(ipAddr, machineName) {
+  var ServerVMClass = function(ipAddr, machineName) {
     this.ipAddr = ipAddr || '';
     this.machineName = machineName || '';
   };
 
 
-  ServerVM.prototype.timeSuck = function(howMuchSuck) {
+  ServerVMClass.prototype.timeSuck = function(howMuchSuck) {
     var randomNumber = Math.random();
 
-    console.log('>>[' + this.machineName + '] timeSuck takes a long time to run!!!');
+    console.log('>>[' + this.machineName + '] timeSuck takes a while to run!!!');
     for (var i = 0; i < howMuchSuck; i++) {
       Math.cos(randomNumber);
       Math.sqrt(randomNumber);
@@ -17,6 +17,6 @@ define(function() {
     }
   };
 
-  return ServerVM;
+  return ServerVMClass;
 
 });
