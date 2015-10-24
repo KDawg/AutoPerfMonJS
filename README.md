@@ -1,0 +1,60 @@
+
+<h3>PerfMon R&D</h3>
+
+<p>This demo is based on a the technique <em>Aspect Oriented Programming</em> discussed by
+  Rodrigo Fernandez. I saw his talk <a
+    href="http://www.slideshare.net/RodrigoFernandez33/monitoring-for-the-masses">Monitoring
+    for the Masses</a> at HTML5DevConf</p>
+
+<p>You'll see this demo uses AOP for automatically, and I'll claim invisibly,
+  measuring code execution time.
+  The browser's recently added <em>User Timings</em> API is leveraged because it is a
+  highly precise timer producing results as fine as a fraction of a millisecond.</p>
+
+<h3>Running</h3>
+
+<p>Open the <code>index.html</code> and use the <em>Chrome Developer Tools</em> and look
+  at the <em>Console</em>
+  seeing program results. Read the JavaScript code confirming why the run-time output is
+  interesting.
+</p>
+
+<p><code>main.js</code> has the main entry point of the source code. It has a series of
+  local functions
+  clearly documenting the process of setting up AOP, executing some slow code, reporting
+  on the timing measurements, and breaking down the applied AOP. It uses two distinct
+  styles of code.</p>
+
+<p><a href="http://requirejs.org/">RequireJS</a> is used to bring in the meld library
+  because it's built with that dependency module format. To keep consistency the project's
+  rother sample code sits in files with modular definition.</p>
+
+<p><code>server.js</code> has the first style of code. It's a legit JavaScript Class. One
+  of its functions is math intensive. That's what main applies AOP to for invisibly
+  measuring execution time.</p>
+
+<p><code>compute.js</code> has a JavaScript object with some data and functional
+  attributes. One
+  of them is math intensive and that's what main applies AOP to. During the run you'll
+  see it measure execution and report on it.</p>
+
+<p>Measurement stats are recorded by the main app. It attaches its own functions that are
+  run before and after the time consuming function implemented by the two modules
+  it requires in.</p>
+
+<h3>Additional Reading</h3>
+
+<p>Read <a
+  href="http://know.cujojs.com/tutorials/aop/intro-to-aspect-oriented-programming">about
+  AOP</a> and learn why it's a useful technique.</p>
+
+<p>Leverages a library called <a href="https://github.com/cujojs/meld">meld</a> that
+  implements AOP for J/S.</p>
+
+<p>Some of this work takes advantage of the browser's
+  <a href="http://www.html5rocks.com/en/tutorials/webperformance/usertiming/">User
+    Timing</a> API for high-resolution timers. APIs include:</p>
+<code>performance.mark(), .measure(), .getEntriesByType()</code>
+
+<p>Apparently the <a href="http://docs.spring.io/spring/docs/2.5.5/reference/aop.html">Java
+  community established AOP</a> pattern.</p>
