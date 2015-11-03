@@ -37,7 +37,7 @@ requirejs(['meld', 'server', 'compute'], function(meld, ServerVM, compute) {
     var measures = performance.getEntriesByType('measure');
 
     measures.forEach(function(entry, index, allEntries) {
-      console.log(entry.name + 'duration[' + index + '] was ' + entry.duration + ' ms', entry);
+      console.log(entry.name + ' duration[' + index + '] was ' + entry.duration + ' ms', entry);
     });
   }
 
